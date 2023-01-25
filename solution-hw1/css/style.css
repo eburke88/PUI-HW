@@ -1,0 +1,33 @@
+body {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: black;
+    background-color:  #ffffff;
+}
+
+img {
+    width: 40%;
+}
+
+.logo {
+    width: 30%;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: auto;
+}
+
+currentpage {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: yellow;
+    font-weight: bold;
+    width:fit-content;
+    
+}
