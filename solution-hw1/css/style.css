@@ -5,23 +5,18 @@ body {
     background-color:  #ffffff;
 }
 
-img {
-    width: 40%;
-}
-
 .logo {
-    width: 30%;
+    width: 25%;
 }
 
 .center {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
     height: auto;
 }
 
-currentpage {
+.currentPage {
     display: block;
     text-align: center;
     margin-left: auto;
@@ -31,3 +26,45 @@ currentpage {
     width:fit-content;
     
 }
+
+.galleryimg{
+    width:20%;
+    margin: auto auto;
+    border:2px solid black;
+}
+
+.detailimg{
+    width:40%;
+    margin: auto auto;
+    border:2px solid black;
+}
+
+.cartimg{
+    width:40%;
+    margin: auto auto;
+    border:2px solid black;
+}
+
+
+hr{
+    height:2px;
+    background-color: black;
+}
+
+.button {
+    border:3px solid black;
+    color: black;
+    background-color: yellow;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 4px 2px;
+  }
+
+  .select {
+    display: inline-block;
+    width:100px;
+  }
