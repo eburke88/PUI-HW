@@ -1,75 +1,194 @@
+
 body {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-family: Roboto, Arial, Helvetica, sans-serif; 
     color: black;
     background-color:  #ffffff;
 }
 
-.logo {
-    width: 25%;
-}
+/* header settings */
 
-.center {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-}
+  .logo {
+      width: 25%;
+  }
 
-.currentPage {
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: yellow;
-    font-weight: bold;
-    width:fit-content;
-    
-}
-
-.galleryimg{
-    width:20%;
-    margin: auto auto;
-    border:2px solid black;
-}
-
-.detailimg{
-    width:40%;
-    margin: auto auto;
-    border:2px solid black;
-}
-
-.cartimg{
-    width:40%;
-    margin: auto auto;
-    border:2px solid black;
-}
-
-
-hr{
+  hr{
     height:2px;
     background-color: black;
-}
-
-.button {
-    border:3px solid black;
-    color: black;
-    background-color: yellow;
-    padding: 8px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: bold;
-    margin: 4px 2px;
   }
+
+  .title{
+    margin-top: 75px; /* spacing above title */
+    font-size: 25px;
+    text-align:center;
+  }
+
+
+  /* directory settings */
+
+  .directory{ /*The top links*/
+    text-decoration: none; /* remove underline from links*/
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 5px;
+  }
+
+    .current-page {
+      margin-left: auto; /* centering link */
+      margin-right: auto;
+      background-color: yellow;
+      font-weight: bold;
+      width:fit-content; /* only higlighting text */ 
+    }
+
+    a{
+      text-decoration: none;  /* removing underline */
+      color: black;
+    }
+
+
+
+
+/* Three different types of images for each screen */
+    .gallery-img{
+        width: 100%;  
+        border:3px solid black;
+        box-sizing: border-box;
+        margin-bottom: -10px;  /* bringing description closer to image */
+        
+    }
+
+    .detail-img{
+        width:100%; 
+        border:3px solid black;
+        box-sizing: border-box;
+        text-align:center;
+    }
+
+    .cart-img{
+        width:30%;
+        border:3px solid black;
+    }
+
+
+/* buttons */
+
+    .add-button {
+        border:3px solid black;
+        background-color: yellow;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        width:75%; /* take up 75% of the "buy" flexbox*/
+    }
+
+    .checkout-button {
+        border:3px solid black;
+        background-color: yellow;
+        padding: 10px 10px; /* add space in button*/
+        text-align: center; /* center in button*/
+        font-size: 18px;
+        font-weight: bold;
+    }
+
 
   .select {
     display: inline-block;
-    width:100px;
+    width:100%; /* take up the whole details div*/
+    font-size: 18px;
+    padding:5px; /* add space in box*/
+    border-width: 2px;
+    border-color: black;
+    margin-bottom: 5px; /* Space between selects*/
   }
+  
 
-  .productentry {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+
+/* divs to represent an "entry" - image and its details */
+    
+
+  /* gallery divs */
+    .gallery-product-entry {
+      margin-left: auto;      /* setting margins to position entry in center */
+      margin-right: auto;
+      width:20%; /* setting width of image*/
+      margin-bottom: 20px;  /* setting spacing between entries */
+      padding: 5px;
+    }
+
+      .gallery-product-entry:hover {     /* when an entry is hovered over, highlight it */
+        background-color: yellow;
+        color: black;
+        font-weight: bold; 
+        text-decoration:underline;
+      }
+
+      .gallery-description {
+        display:block;
+        text-align:left;
+        color:black;
+        font-size: 20px;
+        margin-bottom: -10px;
+        padding-left: 5px;
+        
+      }
+
+
+  /* cart divs */
+    .cart-entry {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width:30%
+    }
+      .cart-description{
+        color:black; 
+      }
+    
+    .checkout{ /* price and button */
+      text-align: center;
+    }
+
+
+  /* detail divs */
+    .detail-entry {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width:40%
+    }
+      .detail-link {
+        margin-bottom: 20px; /* setting spacing between links for directory on detail page*/
+      }
+
+      .detail-img-description {
+        display:inline-block;
+        text-align:left;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .purchase-info{
+        display:inline-block;
+        width: 50%;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+      }
+        
+        .buy{
+          display:flex;
+          margin-top: 75px;           /* spacing between selects and buy */
+          font-weight: bold;
+          justify-content: space-between; /* leave space between price and button */
+          padding-left: 5px; /* bring price slightly inside div */
+        }
+
+            

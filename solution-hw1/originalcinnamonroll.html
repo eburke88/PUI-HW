@@ -10,54 +10,65 @@
   
   <body>
 
-    <a href="home.html">
-      <img src = "logo/BunBunBakeShop.svg" class = "logo">
+    <a href="index.html">
+      <img src = "logo/BunBunBakeShop.svg" class = "logo">      <!-- inserting the logo at a size according to my CSS style -->
     </a>
 
-    <hr>
+    <hr>     <!-- inserting horizontal line -->
 
-    <div class = "center">
+    <div class = "directory">     <!-- aligning everything below to the center of the page -->
 
-      <div>
-        <a class="link currentPage"href= "./home.html" >PRODUCTS</a>
+      <div class = detail-link>
+        <a  href="./index.html" class= "current-page" >PRODUCTS</a> <!-- setting the currentpage styling to PRODUCTS --> 
       </div>
 
-      <div>
-        <a class="link"href= "./cart.html" >CART</a>
+      <div class = detail-link>
+        <a href= "./cart.html" >CART</a>        <!-- linking the CART text -->
       </div>
-        
-     
-      
-      <p>Original cinnamon roll</p>
-        <img src = "products/original-cinnamon-roll.jpg"  class = "detailimg">
-  
-      <p>Customize our delicious, hand-made cinnamon roll to your liking!</p>
-      <p>Glazing:</p>
-        <select class="select" name="glazing" id="glazing">
-          <option value="1">Keep original</option>
-          <option value="3">Sugar milk</option>
-          <option value="3">Vanilla milk</option>
-          <option value="3">Double chocolate</option>
-        </select>
-
-
-      <p>Pack Size:</p>
-        <select class="select" name="packsize" id="packsize">
-          <option value="1">1</option>
-          <option value="3">3</option>
-          <option value="3">6</option>
-          <option value="3">12</option>
-        </select>
-
-    
-        
-
-      <p>$2.49</p>
-
-      <button class="button">Add to Cart</button>
-
 
     </div>
+        
+     
+    <div class="title">
+      <p>Original cinnamon roll</p> <!-- creating the page title text in my title CSS style -->
+    </div>
+     
+    <div class = "detail-entry">  <!-- creating a div for the entire entry - image, description, price -->
+
+      <div>
+        <img src = "products/original-cinnamon-roll.jpg"  class = "detail-img">          <!-- Inserting the image at the proper appearance according to my CSS style -->
+      </div>
+        
+      <div class="purchase-info">  <!-- setting general appearance for all details, including description and purchase info-->
+        
+        <div class="detail-img-description"> <!-- inserting the description for the image according to my CSS style-->
+          <p>Customize our delicious, hand-made cinnamon roll to your liking!</p>
+        </div>
+
+        <p>Glazing:</p> <!-- inserting a selectbox with label and options, according to my CSS style-->
+          <select class="select" name="glazing" id="glazing">
+            <option value="1">Keep original</option>
+            <option value="3">Sugar milk</option>
+            <option value="3">Vanilla milk</option>
+            <option value="3">Double chocolate</option>
+          </select>
+
+        <p>Pack Size:</p>
+          <select class="select" name="packsize" id="packsize">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="3">6</option>
+            <option value="3">12</option>
+          </select>
+     
+        <div class="buy"> <!-- inserting a flebox with button and price-->
+          <p>$2.49</p>
+          <button class="add-button">Add to Cart</button> <!-- inserting an "add to cart" button according to my CSS style-->
+        </div>
+
+      </div>
+    </div>
+
 
   </body>
 </html>
