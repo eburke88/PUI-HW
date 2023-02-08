@@ -11,28 +11,40 @@
   <body>
 
     <div class = "header">
+
       <div class="logo">
         <a href= "./index.html">
         <img src = "logo/BunBunBakeShop.svg" >     <!-- inserting the logo at a size according to my CSS style -->
         </a> 
       </div>
-     
+
       <div class="headerText">
+
         <div class = "directory">     <!-- aligning everything below to the center of the page --> 
-          <a  class = "current-page" href= "./index.html"> PRODUCTS</a>       <!-- setting the currentpage styling to PRODUCTS -->      
-          <a href= "./cart.html" >CART</a>         <!-- linking the CART text -->
+          <div class="detail-link"> 
+            <a href="./index.html" class="current-page">PRODUCTS</a> 
+          </div>     
+          
+          <div class="detail-link">
+            <a href="./cart.html"> CART</a>   <!-- linking the CART text -->      
+          </div> 
+
         </div>
+
         <hr>     <!-- inserting horizontal line -->
+
         <div class="title">
           <p>Original cinnamon roll</p>          <!-- creating the page title text in my title CSS style -->
         </div>
+
       </div>
-      </div>
+    </div>
      
     <div class = "detail-entry">  <!-- creating a div for the entire entry - image, description, price -->
 
       <div class = "original-cinnamon-roll">
-        <div>
+
+        <div class="original-cinnamon-roll-img">
           <img src = "products/original-cinnamon-roll.jpg"  class = "detail-img">          <!-- Inserting the image at the proper appearance according to my CSS style -->
         </div>
           
@@ -43,21 +55,22 @@
           </div>
 
           <div>
-          <p class="select-label">Glazing:</p> <!-- inserting a selectbox with label and options, according to my CSS style-->
-            <select class="select" name="glazing" id="glazing">
-              <option value="1">Keep original</option>
-              <option value="3">Sugar milk</option>
-              <option value="3">Vanilla milk</option>
-              <option value="3">Double chocolate</option>
-            </select>
 
-          <p class="select-label">Pack Size:</p>
-            <select class="select" name="packsize" id="packsize">
-              <option value="1">1</option>
-              <option value="3">3</option>
-              <option value="3">6</option>
-              <option value="3">12</option>
-            </select>
+            <p class="select-label">Glazing:</p> <!-- inserting a selectbox with label and options, according to my CSS style-->
+              <select class="select" name="glazing" id="glazing">
+                <option value="1">Keep original</option>
+                <option value="3">Sugar milk</option>
+                <option value="3">Vanilla milk</option>
+                <option value="3">Double chocolate</option>
+              </select>
+
+            <p class="select-label">Pack Size:</p>
+              <select class="select" name="packsize" id="packsize">
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="3">6</option>
+                <option value="3">12</option>
+              </select>
 
           </div>
       
@@ -70,6 +83,7 @@
       </div>
     </div>
 
-
   </body>
 </html>
+
+<!-- fix spacing with links  -->

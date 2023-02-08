@@ -17,7 +17,7 @@ body {
     width:100%;
   }
 
-  .header{ /*div for directory, logo, line, and page title*/
+  .header{ /*ver. flex for directory, logo, line, and page title*/
     display:flex;
     align-items: center;
     gap:20px;
@@ -25,13 +25,17 @@ body {
   }
     
   .title{
-    margin-bottom:50px; /* spacing above title */
+    margin-bottom:50px; 
     margin-top:75px;
-    font-size: 36px;
+    font-size: 38px;
     text-align:left;
   }
 
-  /* directory settings */
+  .headerText{   /* Div for non-logo elements of header*/
+    width:100%  
+  }
+
+/* directory settings */
 
   .directory{ /*The top links*/
     text-decoration: none; /* remove underline from links*/
@@ -39,17 +43,11 @@ body {
     font-size: 25px;
     padding-top: 25px;
     display:flex;
-    padding-right:60px;
+    padding-right:65px;
     align-items:center;
     justify-content: flex-end; /*put on right side of the screen*/
-    gap:75px;
+    gap:75px; /*spacing between buttons*/
     padding-bottom: 25px;
-  }
-
-  
-
-  .headerText{
-    width:100%
   }
 
     .current-page {
@@ -63,8 +61,10 @@ body {
       color: black;
     }
 
-
-
+    .detail-link {
+      margin-bottom: 25px; /* setting spacing around links on the detail pageto match the other two pages*/
+      margin-top:25px;
+    }
 
 /* Three different types of images for each screen */
     .gallery-img{
@@ -91,7 +91,6 @@ body {
 
 /* divs to represent an "entry" - image and its details */
     
-
   /* gallery divs */
   
     .row {  /*div to hold each row of three images */
@@ -133,14 +132,10 @@ body {
       text-align:left;
       align-items:center;
       width:63%;
+      height:fit-content;  /* to account for the cart-entry div used for the total */
       gap:25px;
+      margin-bottom:-9px; /* fixing spacing betwen image and remove - had issue with <a> height */
     }
-      .cart-description{
-        display:flex;
-        color:rgb(19, 17, 17); 
-        text-align:left;
-        align-items:center;
-      }
       
         .caption{
           width:65%;         /* how much of the div the caption takes */
@@ -164,26 +159,22 @@ body {
         }
     
       
-    .total-line{   /* settings for the line above the totalprice */
+    .total-line{   /* settings for the line above the total price */
       height:2px;
       background-color: black;
       width:63%;
-      margin-left:37%;
-      margin-top:20px;
-      margin-bottom:20px;
+      margin-left:37%; /* aligning it to the rest of the content */
+      margin-bottom:0px;
     }
      
     .total{
-      display: flex;
-      gap:370px; /* space between "total" and price */
-      margin-left:591px;
-      padding-bottom:50px; /* space between price and button */
       font-size: 32px;
-      margin-right:60px;
+      width:65%; 
     }
     
     .checkout{ /* div for button */
       text-align: right;  /* put botton on right side of screen */
+      margin-top:15px;
     }
    
       .checkout-button {
@@ -198,48 +189,47 @@ body {
 
 
   /* detail divs */
-    .detail-entry {
+    .detail-entry { /* div for all content on page (non-header)*/
       margin-top: 10px;
       margin-bottom: 10px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 85px;
+      margin-right: 45px; /* center entry*/
       text-align: center;
-      width:80% /* width of entry*/
     }
-      .detail-link {
-        margin-bottom: 20px; /* setting spacing between links for directory on detail page*/
-      }
 
-      .detail-img-description {
-        display:inline-block;
-        text-align:left;
-        width: 100%;
-        margin-bottom: 10px;
-        font-size: 22px;
-      }
-
-      .original-cinnamon-roll{ /* div for image and purchase info */
+      .original-cinnamon-roll{ /* hoz. flex box for image and purchase info */
         display:flex;
         justify-content: space-around;
-        gap:50px;
+        gap:60px;
+        
       }
+      
+        .original-cinnamon-roll-img{ /* div to size img in flex box */
+          width:69%; 
+        }
     
 
-        .purchase-info{
+        .purchase-info{ /* ver. flex box for selects, prices, buttons */
           display:flex;
           flex-direction: column;
           gap:40px;
-          width: 75%;
-          font-size: 18px;
           margin-bottom: 10px;
           text-align: left;
+          width:31% ; /* roughly a third of parent div*/
         }
 
-        
+          .detail-img-description {
+            display:inline-block;
+            text-align:left;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 24px;
+          }
+
           .select {
             display: inline-block;
             width:100%; /* take up the whole purchase-info div*/
-            font-size: 22px;
+            font-size: 24px;
             padding:7px; /* add space in box*/
             border-width: 3px;
             border-color: black;
@@ -248,28 +238,26 @@ body {
 
             .select-label{
               margin-bottom:10px; /* Space between label and box*/
-              font-size:22px;
+              font-size:24px;
             }
         
-        .buy{ /* div for price and add to cart button*/
-          display:flex;
-          margin-top: 75px;           /* spacing between selects and buy */
-          font-weight: bold;
-          justify-content: space-between; /* leave space between price and button */
-          padding-left: 5px; /* bring price slightly inside div */
-        }
-          .add-button {
-            border:3px solid black;
-            background-color: yellow;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
+          .buy{ /* flex box for price and add to cart button*/
+            display:flex;
+            margin-top: 100px; /* spacing between selects and buy */
             font-weight: bold;
-            width:75%; /* take up 75% of the "buy" flexbox*/
+            justify-content: space-between; /* leave space between price and button */
+            padding-left: 5px; /* bring price slightly inside div */
+            font-size:24px;
           }
+            .add-button {
+              border:3px solid black;
+              background-color: yellow;
+              text-align: center;
+              text-decoration: none;
+              font-size: 22px;
+              font-weight: bold;
+              width:75%; /* take up 75% of the "buy" flexbox*/
+            }
 
-        /* can i put remove inside entry without centering issue */
-        /* how can i make <a> shorter or move it */
-        /* easier way to align? */
 
             
