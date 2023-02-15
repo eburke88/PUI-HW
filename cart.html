@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+   
+    <div class = "header">
+
+      <div class="logo">
+        <a href= "./index.html">
+        <img src = "logo/BunBunBakeShop.svg" >     <!-- inserting the logo at a size according to my CSS style -->
+        </a> 
+      </div>
+
+      <div class="headerText">
+
+        <div class = "directory">     <!-- aligning everything below to the center of the page --> 
+          <a href= "./index.html"> PRODUCTS</a>      
+          <p class= "current-page"> CART</a>         <!-- linking the CART text -->
+        </div>
+
+        <hr>     <!-- inserting horizontal line -->
+
+        <div class="title">
+          <p>Shopping Cart</p>          <!-- creating the page title text in my title CSS style -->
+        </div>
+
+      </div>
+
+    </div>
+
+  
+    <div class="cart-entry">         <!-- creating a div in the cartEntry style  -->
+
+        <div class="image">
+          <a href="./originalcinnamonroll.html">
+            <img src = "products/original-cinnamon-roll.jpg" class="cart-img">
+          </a>
+        </div>
+
+        <div class="caption">
+          Original cinnamon roll<br>Glazing: Keep original<br>Pack size: 1
+        </div>
+            
+      <div class="price">
+        <p>$2.49</p>
+      </div>
+       
+    </div>
+
+    <p class="remove">Remove</p>
+
+      <!-- repeating above -->
+
+    <div class="cart-entry">
+
+        <div class="image">
+          <a href="./originalcinnamonroll.html">
+            <img src = "products/double-chocolate-cinnamon-roll.jpg" class="cart-img">
+          </a>
+        </div>
+
+        <div class="caption">
+          Double chocolate cinnamon roll<br>Glazing: Sugar milk<br>Pack size: 6
+        </div>
+            
+        <div class="price">
+          <p>$27.45</p>
+        </div>
+
+    </div>
+    
+    <p class="remove">Remove</p>
+
+    <hr class="total-line">
+
+    <div class="cart-entry"> <!-- entry div with no image to line up total -->
+      <div class="image"></div>
+      <div class="total">Total</div>
+      <div class="price">
+        <p>$29.94</p>
+      </div>
+    </div>
+
+   
+
+    <div class="checkout">    <!-- center button and price -->
+      <button class="checkout-button">Checkout</button>
+    </div>
+          
+  </body>
+  
+
+</html>
