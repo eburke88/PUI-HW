@@ -144,5 +144,11 @@ body {
               width:75%; /* take up 75% of the "buy" flexbox*/
             }
 
+            
+            .price{
+              font-size:32px;
+              padding-right:60px;
+            }
+
 
             
