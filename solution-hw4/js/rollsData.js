@@ -1,4 +1,4 @@
-const rolls = {
+const rolls = {    // array holding info to be used to populate the cart array when added
     "Original": {
         "basePrice": 2.49,
         "imageFile": "original-cinnamon-roll.jpg",
@@ -25,30 +25,29 @@ const rolls = {
     }    
 };
 
-let cart = []
+let cart = []; // array to hold added rolls
 
 const queryString = window.location.search;
-const params = new URLSearchParams(queryString);
-const rollType = params.get('roll');
-console.log(rollType);
+const params = new URLSearchParams(queryString); 
+const rollType = params.get('roll'); // getting roll name from URL
 
-let currentRoll = rolls[rollType]
+let currentRoll = rolls[rollType]; // setting the current roll as the one clicked
 
-let currentBasePrice = currentRoll.basePrice
+let currentBasePrice = currentRoll.basePrice; // retrieving the baseprice of the roll that was clicked from gallery
 
 const headerElement = document.querySelector('#roll-title');
-headerElement.innerText = rollType + " Cinnamon Roll"
+headerElement.innerText = rollType + " Cinnamon Roll"; // constructing the title of the page
 
 
 const rollImage = document.querySelector('#roll-img');
-rollImage.src = './products/' + rollType + '-cinnamon-roll'+'.jpg';
+rollImage.src = './products/' + rollType + '-cinnamon-roll'+'.jpg'; // calling the corresponding image
 
 
-let glazeNames = ['keep original', 'sugar milk', 'vanilla milk', 'Double Chocolate'];
+let glazeNames = ['keep original', 'sugar milk', 'vanilla milk', 'Double Chocolate']; // options for glazing select
 let glazePrices = [0, 0, 0.5, 1.5];
 let newGlazing = {};
 
-let packSizes = ['1', '3', '6', '12'];
+let packSizes = ['1', '3', '6', '12']; // options for pack size select
 let packPrices = [1, 3, 5, 10];
 let newPack = {};
 
@@ -82,7 +81,7 @@ function glazingChange(element) { // function for updating the price based on gl
   const priceChangeIndex = element.value; //the index of the entry I want to get the price adaption of
 
 
-  currentGlazeName = glazeNames[priceChangeIndex];
+  currentGlazeName = glazeNames[priceChangeIndex]; //retrieving the glazing for that entry
   currentGlazingPrice = glazePrices[priceChangeIndex]; //retrieving the price for that entry
 
   calc(); //updating displayed price
@@ -92,7 +91,7 @@ function glazingChange(element) { // function for updating the price based on gl
 function packChange(element) { // function for updating the price based on pack size selected
   const priceChangeIndex = element.value;
 
-  currentPackSize =packSizes[priceChangeIndex];
+  currentPackSize = packSizes[priceChangeIndex];
   currentPackPrice = packPrices[priceChangeIndex];
 
   calc();
@@ -101,7 +100,7 @@ function packChange(element) { // function for updating the price based on pack 
 function calc() {
   const price = (currentBasePrice + currentGlazingPrice) * currentPackPrice;  //calculating price
 
-  glazeInfoElement.textContent = "$" + price.toFixed(2);
+  glazeInfoElement.textContent = "$" + price.toFixed(2); //rounding and labeling price
 }
 
 
@@ -130,7 +129,7 @@ for (let i = 0; i < packSizes.length; i++) {
 
 
 
-class Roll {
+class Roll { //calls an object that has four fields (below) that will be added to the cart array as dimensions of each roll
 
     constructor(rollType, rollGlazing, packSize, basePrice) {
         this.type = rollType;
@@ -140,7 +139,7 @@ class Roll {
     }
 }
 
-function addRoll() {
+function addRoll() { //adding roll to cart when "add to cart" button is selected
     let newRoll = new Roll(rollType, currentGlazeName, currentPackSize, currentBasePrice);
     cart.push(newRoll);
     console.log(newRoll);
