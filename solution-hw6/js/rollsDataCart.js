@@ -1,4 +1,34 @@
+    
+if (localStorage.getItem('storedRolls') != null) {
+    retrieveFromLocalStorage();
+  }
 
+const rolls = {    // array holding info to be used to populate the cart array when added
+    "Original": {
+        "basePrice": 2.49,
+        "imageFile": "original-cinnamon-roll.jpg",
+    },
+    "Apple": {
+        "basePrice": 3.49,
+        "imageFile": "apple-cinnamon-roll.jpg"
+    },
+    "Raisin": {
+        "basePrice": 2.99,
+        "imageFile": "raisin-cinnamon-roll.jpg"
+    },
+    "Walnut": {
+        "basePrice": 3.49,
+        "imageFile": "walnut-cinnamon-roll.jpg"
+    },
+    "Double-Chocolate": {
+        "basePrice": 3.99,
+        "imageFile": "double-chocolate-cinnamon-roll.jpg"
+    },
+    "Strawberry": {
+        "basePrice": 3.99,
+        "imageFile": "strawberry-cinnamon-roll.jpg"
+    }    
+  };
 
 const glazePrices = { // object holding prices for each glaze
         "Original": 0,
@@ -30,11 +60,18 @@ class Roll { //calls an object that has four fields (below) that will be added t
     }
 }
 
+function addRoll(imageURL, rollType, currentGlazeName, currentPackSize, currentBasePrice) { //adding roll to cart when "add to cart" button is selected
+    let newRoll = new Roll(imageURL, rollType, currentGlazeName, currentPackSize, currentBasePrice);
+    cart.push(newRoll);
+    console.log(newRoll);
+    console.log(cart);
+  
+    saveToLocalStorage();
+   
+  };
 
-// cart.push(new Roll(rolls.Original.imageURL, "Original", "Sugar Milk", "1", rolls.Original.basePrice)); // adding the objects      
-// cart.push(new Roll(rolls.Walnut.imageURL, "Walnut", "Vanilla Milk", "12", rolls.Walnut.basePrice));
-// cart.push(new Roll(rolls.Raisin.imageURL,"Raisin", "Sugar Milk", "3", rolls.Raisin.basePrice));
-// cart.push(new Roll(rolls.Apple.imageURL, "Apple", "Original", "3", rolls.Apple.basePrice));
+
+updateTotal();
 
 
 for (const roll of cart) { 
@@ -58,7 +95,6 @@ function createElement(roll) { // creating a template based on one entry, and cl
     rollListElement.prepend(roll.element);  // adding the cloned entry to the DOM
 
     updateElement(roll);
-
 }
 
 function updateElement(roll) { // assigning corresponding values to the empty fields for each roll created
@@ -73,29 +109,39 @@ function updateElement(roll) { // assigning corresponding values to the empty fi
     rollGlazeElement.innerText = roll.glazing;
     rollPackSizeElement.innerText = roll.size;
     rollPriceElement.textContent = "$" + roll.calculatedPrice.toFixed(2);
-
-    saveToLocalStorage();
 }
 
 
 function deleteRoll(roll) {
-    roll.element.remove();
-    cart.delete(roll);
+    roll.element.remove(); // remove roll from DOM
+    cart.splice(cart.indexOf(roll), 1); // remove roll from cart
 
-    updateTotal();
+    updateTotal(); // update total price
 
 }
 
-function updateTotal() {
+function updateTotal() { // function for updating total price based on updated cart
 
     const rollTotalPriceElement = document.querySelector('#total-price')
 
-    var total = 0;
+    var total = 0; // loop through array and add together the calculated prices
     for (var i = 0; i < cart.length; i++) {
         total = total + cart[i].calculatedPrice;
     }
 
-    rollTotalPriceElement.textContent = "$" + total
+    rollTotalPriceElement.textContent = "$" + total.toFixed(2);
 };
 
+function retrieveFromLocalStorage() {
+    const cartArrayString = localStorage.getItem('storedRolls');
+    const cartArray = JSON.parse(cartArrayString);
+    
+    for (const rollData of cartArray) {
+      const roll = addRoll(rollData.imageURL, rollData.rollType,
+        rollData.rollGlazing, rollData.packSize, rollData.basePrice);
+        
+      createElement(roll);
+    }
+
+  }
 
