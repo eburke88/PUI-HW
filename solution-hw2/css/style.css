@@ -201,7 +201,6 @@ body {
         display:flex;
         justify-content: space-around;
         gap:60px;
-        
       }
       
         .original-cinnamon-roll-img{ /* div to size img in flex box */

@@ -5,6 +5,8 @@
     <title>Page Title</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/rollsData.js"></script>
+
   </head>
 
   <body>
@@ -34,60 +36,51 @@
 
     </div>
 
+    <div id="roll-list">  <!-- creating the div that rolls will be added to when created -->
+
+      <template id="cart-entry"> <!-- creating the template for reach roll entry-->
+
+        <div class="cart-entry">         <!-- creating a div in the cartEntry style  -->
+
+          <div class="roll-info">
+            <!-- <a href="./originalcinnamonroll.html">       should i have links to corresponding?-->  
+              <img src = "products/original-cinnamon-roll.jpg" class="roll-img">
+            <!-- </a> -->
+          
+            <div class ="roll-caption">
+
+              <div class="roll-title">
+                <span class = "roll-type"></span><span> Cinnamon Roll</span> <!-- span element that will be completed with corresponding roll names-->
+              </div>
+
+              <div class="roll-glazing">
+                <span> Glazing: </span><span class = "glaze-type"></span>
+              </div>
+
+              <div class="roll-pack-size">
+                <span> Pack Size: </span><span class = "pack-size"></span>
+              </div>
+
+            </div>
+              
+            <div class="roll-price">placeholder</div>
+
+          </div>
+
+          <div class="remove">Remove</div>
+
+        </div>
   
-    <div class="cart-entry">         <!-- creating a div in the cartEntry style  -->
-
-        <div class="image">
-          <a href="./originalcinnamonroll.html">
-            <img src = "products/original-cinnamon-roll.jpg" class="cart-img">
-          </a>
-        </div>
-
-        <div class="caption">
-          Original cinnamon roll<br>Glazing: Keep original<br>Pack size: 1
-        </div>
-            
-      <div class="price">
-        <p>$2.49</p>
-      </div>
-       
-    </div>
-
-    <p class="remove">Remove</p>
-
-      <!-- repeating above -->
-
-    <div class="cart-entry">
-
-        <div class="image">
-          <a href="./originalcinnamonroll.html">
-            <img src = "products/double-chocolate-cinnamon-roll.jpg" class="cart-img">
-          </a>
-        </div>
-
-        <div class="caption">
-          Double chocolate cinnamon roll<br>Glazing: Sugar milk<br>Pack size: 6
-        </div>
-            
-        <div class="price">
-          <p>$27.45</p>
-        </div>
-
-    </div>
+      </template>
     
-    <p class="remove">Remove</p>
-
+    </div>
+       
     <hr class="total-line">
 
-    <div class="cart-entry"> <!-- entry div with no image to line up total -->
-      <div class="image"></div>
-      <div class="total">Total</div>
-      <div class="price">
-        <p>$29.94</p>
-      </div>
+    <div class="total-section">
+        <div class="total-price">Total</div>
+        <div class="roll-price" id="total-price"></div>
     </div>
-
-   
 
     <div class="checkout">    <!-- center button and price -->
       <button class="checkout-button">Checkout</button>

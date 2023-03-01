@@ -65,96 +65,47 @@ hr{
     margin-top:25px;
   }
 
-/* Three different types of images for each screen */
-  .gallery-img{
-      width: 100%;  
-      border:3px solid black;
-      box-sizing: border-box;
-      margin-bottom: -10px;  /* bringing description closer to image */
-      
-  }
-
-  .detail-img{
-      width:100%; 
-      border:3px solid black;
-      box-sizing: border-box;
-      text-align:center;
-  }
-
-  .cart-img{
-      width:100%;
-      border:3px solid black;
-      box-sizing: border-box;
-  }
-
-
-/* divs to represent an "entry" - image and its details */
-  
-/* gallery divs */
-
-  .row {  /*div to hold each row of three images */
-    display:flex;
-    gap:40px; /*space between images */
-    justify-content: space-around;
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-
-
-    .gallery-product-entry {
-      width:35%; /* setting width of entry*/
-      margin-bottom: 20px;  /* setting spacing between entries */
-      padding: 5px; /* highlighted region */
-      text-decoration:underline;
-    }
-
-      .gallery-product-entry:hover {     /* when an entry is hovered over, highlight it */
-        background-color: yellow;
-        color: black;
-        font-weight: bold; 
-      }
-
-      .gallery-description {
-        display:block;
-        text-align:left;
-        color:black;
-        font-size: 20px;
-        padding-left: 5px;
-        
-      }
-
 
 /* cart divs */
+
   .cart-entry {   /* flex box for image, caption, price */
     display:flex;
-    margin-left:37%;
+    flex-direction:column;
+    margin-left:37%; /* indenting to the right of the screen */
     text-align:left;
     align-items:center;
-    width:63%;
+    width:63%; /* take up the remainder of the screen */
     height:fit-content;  /* to account for the cart-entry div used for the total */
-    gap:25px;
-    margin-bottom:-9px; /* fixing spacing betwen image and remove - had issue with <a> height */
+    gap:7px; /* space between image and caption */
+    margin-bottom:20px; /* fixing spacing betwen image and remove - had issue with <a> height */
   }
+    .roll-info{ /* vertical flex for type, glazing, and pack size*/
+      display:flex;
+      align-items: center;
+    }
     
-      .caption{
-        width:65%;         /* how much of the div the caption takes */
+      .roll-caption{
+        width:80%;         /* how much of the div the caption takes */
         font-size:27px;
       }
 
-      .image{
-        width:20%;         /* how much of the div the image takes */
+      .roll-img{
+        width:20%;
+        margin-right: 30px;
+        border:3px solid black;
+        box-sizing: border-box;
       }
 
-      .price{
+      .roll-price{
         font-size:32px;
-        padding-right:60px;
+        padding-right:60px; 
       }
 
       .remove{
         font-size:10px;
-        margin-left:37%;
         font-weight:bold;
-        margin-bottom:20px;   /* space between entries */
+        align-self:flex-start;  /* align to the left */
+        text-decoration:underline;
       }
   
     
@@ -165,12 +116,21 @@ hr{
     margin-left:37%; /* aligning it to the rest of the content */
     margin-bottom:0px;
   }
-   
-  .total{
-    font-size: 32px;
-    width:65%; 
+
+  .total-section{ /* horizontal flex for total label and price */
+    display:flex;
+    margin-top:25px;
+    margin-bottom:40px;
+    margin-left: 52%;
+    gap:360px;
   }
   
+   
+    .total-price{
+      font-size: 32px;
+    }
+
+ 
   .checkout{ /* div for button */
     text-align: right;  /* put botton on right side of screen */
     margin-top:15px;
@@ -183,80 +143,10 @@ hr{
       text-align: center; /* center in button*/
       font-size: 25px;
       font-weight: bold;
-      margin-right:60px;
+      margin-right:40px;
     }
 
 
-/* detail divs */
-  .detail-entry { /* div for all content on page (non-header)*/
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 85px;
-    margin-right: 45px; /* center entry*/
-    text-align: center;
-  }
-
-    .original-cinnamon-roll{ /* hoz. flex box for image and purchase info */
-      display:flex;
-      justify-content: space-around;
-      gap:60px;
-      
-    }
-    
-      .original-cinnamon-roll-img{ /* div to size img in flex box */
-        width:69%; 
-      }
-  
-
-      .purchase-info{ /* ver. flex box for selects, prices, buttons */
-        display:flex;
-        flex-direction: column;
-        gap:40px;
-        margin-bottom: 10px;
-        text-align: left;
-        width:31% ; /* roughly a third of parent div*/
-      }
-
-        .detail-img-description {
-          display:inline-block;
-          text-align:left;
-          width: 100%;
-          margin-bottom: 10px;
-          font-size: 24px;
-        }
-
-        .select {
-          display: inline-block;
-          width:100%; /* take up the whole purchase-info div*/
-          font-size: 24px;
-          padding:7px; /* add space in box*/
-          border-width: 3px;
-          border-color: black;
-          margin-bottom: 15px; /* Space between selects*/
-        }
-
-          .select-label{
-            margin-bottom:10px; /* Space between label and box*/
-            font-size:24px;
-          }
-      
-        .buy{ /* flex box for price and add to cart button*/
-          display:flex;
-          margin-top: 100px; /* spacing between selects and buy */
-          font-weight: bold;
-          justify-content: space-between; /* leave space between price and button */
-          padding-left: 5px; /* bring price slightly inside div */
-          font-size:24px;
-        }
-          .add-button {
-            border:3px solid black;
-            background-color: yellow;
-            text-align: center;
-            text-decoration: none;
-            font-size: 22px;
-            font-weight: bold;
-            width:75%; /* take up 75% of the "buy" flexbox*/
-          }
 
 
           

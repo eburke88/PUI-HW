@@ -1,70 +1,117 @@
-const rolls = {    // array holding info to be used to populate the cart array when added
+const rolls = {    // object holding info to be used to populate the cart array when added
     "Original": {
-        "Glazing": "Sugar Milk",
-        "Pack Size": 1,
         "basePrice": 2.49,
-        "imageFile": "original-cinnamon-roll.jpg",
+        "imageURL": "products/original-cinnamon-roll.jpg",
     },
     "Apple": {
         "basePrice": 3.49,
-        "imageFile": "apple-cinnamon-roll.jpg"
+        "imageURL": "products/apple-cinnamon-roll.jpg"
     },
     "Raisin": {
         "basePrice": 2.99,
-        "imageFile": "raisin-cinnamon-roll.jpg"
+        "imageURL": "products/raisin-cinnamon-roll.jpg"
     },
     "Walnut": {
         "basePrice": 3.49,
-        "imageFile": "walnut-cinnamon-roll.jpg"
+        "imageURL": "products/walnut-cinnamon-roll.jpg"
     }
 };
 
+const glazePrices = { // object holding prices for each glaze
+        "Original": 0,
+        "Sugar Milk": 0,
+        "Vanilla Milk": 0.5,
+        "Double Chocolate":1.5
+}
 
-let rollType = ["Original, Walnut, Raisin, Apple"]
-let rollGlazing = [ 'Vanilla Milk', 'Sugar Milk', 'Double Chocolate', 'Original',]; // options for glazing select
-let packSize = ['1', '12', '3', '3']; // options for pack size select
-// let calculatedPrice = 
+const packPrices = { // object holding prices for each pack size
+        "1": 1,
+        "3": 3,
+        "6": 5,
+        "12":10
+}
 
 
-let cart = []; // array to hold added rolls
+let cart = []; // array to hold added/displayed rolls
 
 
 class Roll { //calls an object that has four fields (below) that will be added to the cart array as dimensions of each roll
 
-    constructor(rollType, rollGlazing, packSize, basePrice) {
+    constructor(imageURL, rollType, rollGlazing, packSize, basePrice) {
+        this.imageURL = imageURL
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
         this.basePrice = basePrice;
+        this.calculatedPrice = (this.basePrice + glazePrices[rollGlazing]) * packPrices[packSize];  //calculating price of the added roll
     }
 }
 
 
-for (let i = 0; i < rolls.length; i++) {   // creating a loop to push glazings from info arrays to glazing array
-  // let newRoll = new Roll = (); // adding the objects      
+cart.push(new Roll(rolls.Original.imageURL, "Original", "Sugar Milk", "1", rolls.Original.basePrice)); // adding the objects      
+cart.push(new Roll(rolls.Walnut.imageURL, "Walnut", "Vanilla Milk", "12", rolls.Walnut.basePrice));
+cart.push(new Roll(rolls.Raisin.imageURL,"Raisin", "Sugar Milk", "3", rolls.Raisin.basePrice));
+cart.push(new Roll(rolls.Apple.imageURL, "Apple", "Original", "3", rolls.Apple.basePrice));
 
-  cart.push(newRoll);
-  console.log(newRoll);
-  console.log(cart);
+updateTotal();
+
+
+for (const roll of cart) { 
+    console.log(roll);
+    createElement(roll);
+  }
+
+
+function createElement(roll) { // creating a template based on one entry, and cloning it each time a roll is added 
+    const template = document.querySelector('#cart-entry'); 
+    const clone = template.content.cloneNode(true);
+    roll.element = clone.querySelector('.cart-entry');
+
+    const btnDelete = roll.element.querySelector('.remove');
+
+    btnDelete.addEventListener('click', () => { // remove roll on click
+        deleteRoll(roll);
+    });
+
+    const rollListElement = document.querySelector('#roll-list');
+    rollListElement.prepend(roll.element);  // adding the cloned entry to the DOM
+
+    updateElement(roll);
 
 }
 
-function calc() {
-  const price = (currentBasePrice + currentGlazingPrice) * currentPackPrice;  //calculating price
+function updateElement(roll) { // assigning corresponding values to the empty fields for each roll created
+    const rollImageElement = roll.element.querySelector('.roll-img');
+	const rollTitleElement = roll.element.querySelector('.roll-type');
+    const rollGlazeElement = roll.element.querySelector('.glaze-type');
+	const rollPackSizeElement = roll.element.querySelector('.pack-size');
+    const rollPriceElement = roll.element.querySelector('.roll-price')
 
-  glazeInfoElement.textContent = "$" + price.toFixed(2); //rounding and labeling price
+    rollImageElement.src = roll.imageURL;
+    rollTitleElement.innerText = roll.type;
+    rollGlazeElement.innerText = roll.glazing;
+    rollPackSizeElement.innerText = roll.size;
+    rollPriceElement.textContent = "$" + roll.calculatedPrice.toFixed(2);
 }
 
 
+function deleteRoll(roll) {
+    roll.element.remove(); // remove roll from DOM
+    cart.splice(cart.indexOf(roll), 1); // remove roll from cart
 
+    updateTotal(); // update total price
 
+}
 
+function updateTotal() { // function for updating total price based on updated cart
 
+    const rollTotalPriceElement = document.querySelector('#total-price')
 
-// let glazePrices = [0, 0, 0.5, 1.5];
-// let packPrices = [1, 3, 5, 10];
+    var total = 0; // loop through array and add together the calculated prices
+    for (var i = 0; i < cart.length; i++) {
+        total = total + cart[i].calculatedPrice;
+    }
 
-// let glazeInfoElement = document.querySelector('#glaze-info'); // creating an element tied to the price text
+    rollTotalPriceElement.textContent = "$" + total.toFixed(2);
+};
 
-
-// let basePrice = 2.49;
