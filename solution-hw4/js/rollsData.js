@@ -40,7 +40,7 @@ headerElement.innerText = rollType + " Cinnamon Roll"; // constructing the title
 
 
 const rollImage = document.querySelector('#roll-img');
-rollImage.src = './products/' + rollType + '-cinnamon-roll'+'.jpg'; // calling the corresponding image
+rollImage.src = './products/' + rolls[rollType]["imageFile"]; // calling the corresponding image
 
 
 let glazeNames = ['keep original', 'sugar milk', 'vanilla milk', 'Double Chocolate']; // options for glazing select

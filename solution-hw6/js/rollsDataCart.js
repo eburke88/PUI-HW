@@ -50,8 +50,8 @@ let cart = []; // array to hold added/displayed rolls
 
 class Roll { //calls an object that has four fields (below) that will be added to the cart array as dimensions of each roll
 
-    constructor(imageURL, rollType, rollGlazing, packSize, basePrice) {
-        this.imageURL = imageURL
+    constructor(rollType, rollGlazing, packSize, basePrice) {
+        this.imageURL = "products/" + rolls[rollType]["imageFile"]
         this.type = rollType;
         this.glazing =  rollGlazing;
         this.size = packSize;
