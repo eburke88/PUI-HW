@@ -147,8 +147,9 @@ hr{
       }
 
       .roll-price{
+        width:80px;
         font-size:32px;
-        padding-right:60px; 
+        padding-right:40px; 
       }
 
       .remove{
@@ -171,7 +172,7 @@ hr{
     margin-top:25px;
     margin-bottom:40px;
     margin-left: 52%;
-    gap:360px;
+    gap:342px;
   }
   
    

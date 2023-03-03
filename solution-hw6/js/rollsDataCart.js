@@ -1,83 +1,20 @@
-    
-if (localStorage.getItem('storedRolls') != null) {
-    retrieveFromLocalStorage();
-  }
-
-const rolls = {    // array holding info to be used to populate the cart array when added
-    "Original": {
-        "basePrice": 2.49,
-        "imageFile": "original-cinnamon-roll.jpg",
-    },
-    "Apple": {
-        "basePrice": 3.49,
-        "imageFile": "apple-cinnamon-roll.jpg"
-    },
-    "Raisin": {
-        "basePrice": 2.99,
-        "imageFile": "raisin-cinnamon-roll.jpg"
-    },
-    "Walnut": {
-        "basePrice": 3.49,
-        "imageFile": "walnut-cinnamon-roll.jpg"
-    },
-    "Double-Chocolate": {
-        "basePrice": 3.99,
-        "imageFile": "double-chocolate-cinnamon-roll.jpg"
-    },
-    "Strawberry": {
-        "basePrice": 3.99,
-        "imageFile": "strawberry-cinnamon-roll.jpg"
-    }    
-  };
-
-const glazePrices = { // object holding prices for each glaze
-        "Original": 0,
-        "Sugar Milk": 0,
-        "Vanilla Milk": 0.5,
-        "Double Chocolate":1.5
-}
-
-const packPrices = { // object holding prices for each pack size
-        "1": 1,
-        "3": 3,
-        "6": 5,
-        "12":10
-}
-
-
 let cart = []; // array to hold added/displayed rolls
 
-
-class Roll { //calls an object that has four fields (below) that will be added to the cart array as dimensions of each roll
-
-    constructor(rollType, rollGlazing, packSize, basePrice) {
-        this.imageURL = "products/" + rolls[rollType]["imageFile"]
-        this.type = rollType;
-        this.glazing =  rollGlazing;
-        this.size = packSize;
-        this.basePrice = basePrice;
-        this.calculatedPrice = (this.basePrice + glazePrices[rollGlazing]) * packPrices[packSize];  //calculating price of the added roll
-    }
-}
-
-function addRoll(imageURL, rollType, currentGlazeName, currentPackSize, currentBasePrice) { //adding roll to cart when "add to cart" button is selected
-    let newRoll = new Roll(imageURL, rollType, currentGlazeName, currentPackSize, currentBasePrice);
+function addRoll(rollType, currentGlazeName, currentPackSize, currentBasePrice) { //adding roll to cart when "add to cart" button is selected
+    let newRoll = new Roll(rollType, currentGlazeName, currentPackSize, currentBasePrice);
     cart.push(newRoll);
     console.log(newRoll);
     console.log(cart);
+
+    return newRoll
   
-    saveToLocalStorage();
+    // saveToLocalStorage(); // TODO maybe need this?
    
   };
 
 
 updateTotal();
 
-
-for (const roll of cart) { 
-    console.log(roll);
-    createElement(roll);
-  }
 
 
 function createElement(roll) { // creating a template based on one entry, and cloning it each time a roll is added 
@@ -132,15 +69,21 @@ function updateTotal() { // function for updating total price based on updated c
     rollTotalPriceElement.textContent = "$" + total.toFixed(2);
 };
 
-function retrieveFromLocalStorage() {
+if (localStorage.getItem('storedRolls') != null) { // call to retreive rolls from storage if there are rolls there
+    retrieveFromLocalStorage();
+  }
+
+
+function retrieveFromLocalStorage() { // function to retreive Cart JSON from storage and reassemble into array
     const cartArrayString = localStorage.getItem('storedRolls');
-    const cartArray = JSON.parse(cartArrayString);
-    
-    for (const rollData of cartArray) {
-      const roll = addRoll(rollData.imageURL, rollData.rollType,
-        rollData.rollGlazing, rollData.packSize, rollData.basePrice);
+    const cartArray = JSON.parse(cartArrayString); // reassembling array
+
+    for (const rollData of cartArray) { // loop to create elements based on the retreived data, add them to cart, and update the total price
+      const roll = addRoll(rollData.type, rollData.glazing, rollData.size, rollData.basePrice);
         
       createElement(roll);
+
+      updateTotal();
     }
 
   }

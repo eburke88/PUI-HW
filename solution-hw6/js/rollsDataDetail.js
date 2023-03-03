@@ -1,35 +1,4 @@
-
-
-
-
-const rolls = {    // array holding info to be used to populate the cart array when added
-  "Original": {
-      "basePrice": 2.49,
-      "imageFile": "original-cinnamon-roll.jpg",
-  },
-  "Apple": {
-      "basePrice": 3.49,
-      "imageFile": "apple-cinnamon-roll.jpg"
-  },
-  "Raisin": {
-      "basePrice": 2.99,
-      "imageFile": "raisin-cinnamon-roll.jpg"
-  },
-  "Walnut": {
-      "basePrice": 3.49,
-      "imageFile": "walnut-cinnamon-roll.jpg"
-  },
-  "Double-Chocolate": {
-      "basePrice": 3.99,
-      "imageFile": "double-chocolate-cinnamon-roll.jpg"
-  },
-  "Strawberry": {
-      "basePrice": 3.99,
-      "imageFile": "strawberry-cinnamon-roll.jpg"
-  }    
-};
-
-let cart = []; // array to hold added rolls
+let cart = []; // array to hold added/displayed rolls
 
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString); 
@@ -44,61 +13,38 @@ headerElement.innerText = rollType + " Cinnamon Roll"; // constructing the title
 
 
 const rollImage = document.querySelector('#roll-img');
-rollImage.src = './products/' + rollType + '-cinnamon-roll'+'.jpg'; // calling the corresponding image
+rollImage.src = "./products/" + rolls[rollType]["imageFile"]; // calling the corresponding image
 
-
-let glazeNames = ['keep original', 'sugar milk', 'vanilla milk', 'Double Chocolate']; // options for glazing select
-let glazePrices = [0, 0, 0.5, 1.5];
-let newGlazing = {};
-
-let packSizes = ['1', '3', '6', '12']; // options for pack size select
-let packPrices = [1, 3, 5, 10];
-let newPack = {};
 
 let glazeInfoElement = document.querySelector('#glaze-info'); // creating an element tied to the price text
-
-
 
 
 var option;
 
 let basePrice = 2.49;
 
-let allGlazings = [];  // the array to hold my glaze options
 
-let allSizes = []; // the array to hold my pack size options
-
-
-
-let selectElement = document.querySelector('#glaze-select'); // creating element for glaze select box
-
+let selectElementGlaze = document.querySelector('#glaze-select'); // creating element for glaze select box
 let selectElementPack = document.querySelector('#pack-select'); // creating element for pack size select box
 
 let currentGlazingPrice = 0; // setting initial value so that default price is displayed
 let currentPackPrice = 1;  // setting initial value so that default price is displayed
 
-let currentGlazeName = "keep original";
-let currentPackSize = "1";
 
 
 function glazingChange(element) { // function for updating the price based on glaze selected
-const priceChangeIndex = element.value; //the index of the entry I want to get the price adaption of
-
-
-currentGlazeName = glazeNames[priceChangeIndex]; //retrieving the glazing for that entry
-currentGlazingPrice = glazePrices[priceChangeIndex]; //retrieving the price for that entry
-
-calc(); //updating displayed price
+  currentGlazingPrice = parseFloat(element.value); // get value from selected option
+  currentGlazeName = element.options[element.selectedIndex].text; // get text content from selected option
+ 
+  calc(); //updating displayed price
 
 }
 
 function packChange(element) { // function for updating the price based on pack size selected
-const priceChangeIndex = element.value;
+  currentPackPrice = parseFloat(element.value); 
+  currentPackSize =  element.options[element.selectedIndex].text; 
 
-currentPackSize = packSizes[priceChangeIndex];
-currentPackPrice = packPrices[priceChangeIndex];
-
-calc();
+  calc();
 }
 
 function calc() {
@@ -108,40 +54,26 @@ glazeInfoElement.textContent = "$" + price.toFixed(2); //rounding and labeling p
 }
 
 
-for (let i = 0; i < glazeNames.length; i++) {   // creating a loop to push glazings from info arrays to glazing array
-allGlazings.push(newGlazing = { name: glazeNames[i], price: glazePrices[i] }); // adding the objects      
-
+for (const [glazing, price]  of Object.entries(glazePrices)){   // creating a loop to push glazings and their prices to the select box
+  
 option = document.createElement('option'); // creating options for those objects in the select
-option.text = newGlazing.name;
-option.value = allGlazings.length - 1;
-selectElement.add(option);
-}
-
-calc();   // display initial price
-
-
-for (let i = 0; i < packSizes.length; i++) {
-allSizes.push(newPack = { name: packSizes[i], price: packPrices[i] });
-
-option = document.createElement('option');
-option.text = newPack.name;
-option.value = allSizes.length - 1;
-selectElementPack.add(option);
+option.textContent = glazing;
+option.value = price;
+selectElementGlaze.appendChild(option);
 }
 
 
 
-
-
-class Roll { //calls an object that has four fields (below) that will be added to the cart array as dimensions of each roll
-
-  constructor(rollType, rollGlazing, packSize, basePrice) {
-      this.type = rollType;
-      this.glazing =  rollGlazing;
-      this.size = packSize;
-      this.basePrice = basePrice;
+for (const [packSize, price]  of Object.entries(packPrices)){   // creating a loop to push pack sizes and their prices o the select box
+  
+  option = document.createElement('option'); // creating options for those objects in the select
+  option.textContent = packSize;
+  option.value = price;
+  selectElementPack.appendChild(option);
   }
-}
+  
+
+
 
 function addRoll() { //adding roll to cart when "add to cart" button is selected
   let newRoll = new Roll(rollType, currentGlazeName, currentPackSize, currentBasePrice);
@@ -149,22 +81,24 @@ function addRoll() { //adding roll to cart when "add to cart" button is selected
   console.log(newRoll);
   console.log(cart);
 
-  saveToLocalStorage();
+  saveToLocalStorage(); // when a roll is added to cart, save it to local storage
  
 };
 
+calc();   // display initial price
+
 
 function saveToLocalStorage() {
-  const cartArray = Array.from(cart);
+  const cartArray = Array.from(cart);  // retrieve cart array with it's items
   console.log(cartArray);
 
-  const cartArrayString = JSON.stringify(cartArray);
-  console.log(cartArrayString);
+  const cartArrayString = JSON.stringify(cartArray); // turn the array into a JSON string
 
-  localStorage.setItem('storedRolls', cartArrayString);
+  localStorage.setItem('storedRolls', cartArrayString);  // save the string
 
-  console.log("done");
 }
+
+// price Nan When empty
 
 
 
