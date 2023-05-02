@@ -11,7 +11,7 @@ import ProfilePage from './ProfilePage/ProfilePage.js'
 export default function App() {
   
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/index">
       <Routes>
           <Route index element={<ProfilePage />} />
           <Route path="ReXplore" element={<ReXplore />} />
