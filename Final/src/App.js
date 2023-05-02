@@ -12,11 +12,9 @@ export default function App() {
   
   return (
     <Router>
-      <Routes>
           <Route index element={<ProfilePage />} />
           <Route path="ReXplore" element={<ReXplore />} />
           <Route path="Project" element={<ProjectPage />} />
-      </Routes>
     </Router>
   );
 }

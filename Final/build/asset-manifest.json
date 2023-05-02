@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/PUI-HW/Final/build/static/css/main.bde0c499.css",
-    "main.js": "/PUI-HW/Final/build/static/js/main.1f166db9.js",
+    "main.js": "/PUI-HW/Final/build/static/js/main.96ec435b.js",
     "index.html": "/PUI-HW/Final/build/index.html",
     "main.bde0c499.css.map": "/PUI-HW/Final/build/static/css/main.bde0c499.css.map",
-    "main.1f166db9.js.map": "/PUI-HW/Final/build/static/js/main.1f166db9.js.map"
+    "main.96ec435b.js.map": "/PUI-HW/Final/build/static/js/main.96ec435b.js.map"
   },
   "entrypoints": [
     "static/css/main.bde0c499.css",
-    "static/js/main.1f166db9.js"
+    "static/js/main.96ec435b.js"
   ]
 }
